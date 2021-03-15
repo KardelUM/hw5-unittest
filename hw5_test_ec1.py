@@ -63,3 +63,6 @@ class TestHand(unittest.TestCase):
         h1.draw(deck)
         self.assertEqual(len(h1.cards), os+1)
 
+
+if __name__=="__main__":
+    unittest.main()

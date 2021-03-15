@@ -38,3 +38,6 @@ class TestEC2(unittest.TestCase):
             hands = deck.deal(testcase[0], testcase[1])
             cardnumList = [len(hand.cards) for hand in hands]
             self.assertEqual(cardnumList, testcase[2])
+
+if __name__ == "__main__":
+    unittest.main()
