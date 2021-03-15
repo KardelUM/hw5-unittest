@@ -54,7 +54,7 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        c1 = hw5_cards.Card(0, 12)
+        c1 = hw5_cards.Card(1, 12)
         return self.assertEqual(c1.suit, 1), self.assertEqual(c1.suit_name, "Clubs")
     
 
@@ -103,7 +103,7 @@ class TestCard(unittest.TestCase):
 
         '''
         c1 = hw5_cards.Deck()
-        return self.assertIsInstance(c1.deal_card(0), hw5_cards.Card)
+        return self.assertIsInstance(c1.deal_card(), hw5_cards.Card)
     
     def test_q6(self):
         '''
@@ -122,7 +122,7 @@ class TestCard(unittest.TestCase):
         #return X, Y
         c1 = hw5_cards.Deck()
         originSize = len(c1.cards)
-        c1.deal_card(0)
+        c1.deal_card()
         return self.assertEqual(len(c1.cards), originSize-1)
     
 
@@ -141,7 +141,7 @@ class TestCard(unittest.TestCase):
         '''
         c1 = hw5_cards.Deck()
         originSize = len(c1.cards)
-        card = c1.deal_card(0)
+        card = c1.deal_card()
         dealtSize = len(c1.cards)
         c1.replace_card(card)
         newSize = len(c1.cards)
@@ -162,7 +162,7 @@ class TestCard(unittest.TestCase):
         '''
         c1 = hw5_cards.Deck()
         originSize = len(c1.cards)
-        card = c1.deal_card(0)
+        card = c1.deal_card()
         dealtSize = len(c1.cards)
         c1.replace_card(c1.cards[-1])
         newSize = len(c1.cards)

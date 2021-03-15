@@ -2,7 +2,8 @@ import random
 import unittest
 
 VERSION = 0.01
- 
+
+
 class Card:
     '''a standard playing card
     cards will have a suit and a rank
@@ -26,11 +27,10 @@ class Card:
     rank_name: string
         the name of the card's rank (e.g., "King" or "3")
     '''
-    suit_names = ["Diamonds","Clubs","Hearts","Spades"]
-    faces = {1:"Ace",11:"Jack",12:"Queen",13:"King"}
- 
+    suit_names = ["Diamonds", "Clubs", "Hearts", "Spades"]
+    faces = {1: "Ace", 11: "Jack", 12: "Queen", 13: "King"}
 
-    def __init__(self, suit=0,rank=2):
+    def __init__(self, suit=0, rank=2):
         self.suit = suit
         self.suit_name = Card.suit_names[self.suit]
 
@@ -39,10 +39,10 @@ class Card:
             self.rank_name = Card.faces[self.rank]
         else:
             self.rank_name = str(self.rank)
- 
+
     def __str__(self):
         return f"{self.rank_name} of {self.suit_name}"
- 
+
 
 class Deck:
     '''a deck of Cards
@@ -53,14 +53,14 @@ class Deck:
         all 52 cards in a standard deck
     '''
 
-    def __init__(self): 
+    def __init__(self):
 
         self.cards = []
         for suit in range(4):
-            for rank in range(1,14):
-                card = Card(suit,rank)
-                self.cards.append(card) # appends in a sorted order
- 
+            for rank in range(1, 14):
+                card = Card(suit, rank)
+                self.cards.append(card)  # appends in a sorted order
+
     def deal_card(self, i=-1):
         '''remove a card from the Deck
         Parameters  
@@ -72,8 +72,8 @@ class Deck:
         Card
             the Card that was removed
         '''
-        return self.cards.pop(i) 
- 
+        return self.cards.pop(i)
+
     def shuffle(self):
         '''shuffles (randomizes the order) of the Cards
         self.cards is modified in place
@@ -85,14 +85,14 @@ class Deck:
         None
         '''
         random.shuffle(self.cards)
- 
+
     def replace_card(self, card):
-        card_strs = [] # forming an empty list
-        for c in self.cards: # each card in self.cards (the initial list)
-            card_strs.append(c.__str__()) # appends the string that represents that card to the empty list
-        if card.__str__() not in card_strs: # if the string representing this card is not in the list already
-            self.cards.append(card) # append it to the list
-    
+        card_strs = []  # forming an empty list
+        for c in self.cards:  # each card in self.cards (the initial list)
+            card_strs.append(c.__str__())  # appends the string that represents that card to the empty list
+        if card.__str__() not in card_strs:  # if the string representing this card is not in the list already
+            self.cards.append(card)  # append it to the list
+
     def sort_cards(self):
         '''returns the Deck to its original order
         
@@ -107,10 +107,10 @@ class Deck:
         '''
         self.cards = []
         for suit in range(4):
-            for rank in range(1,14):
-                card = Card(suit,rank)
+            for rank in range(1, 14):
+                card = Card(suit, rank)
                 self.cards.append(card)
- 
+
     def deal_hand(self, hand_size):
         '''removes and returns hand_size cards from the Deck
         
@@ -130,6 +130,7 @@ class Deck:
             hand_cards.append(self.deal_card())
         return hand_cards
 
+
 def print_hand(hand):
     '''prints a hand in a compact form
     
@@ -147,3 +148,4 @@ def print_hand(hand):
         r = c.rank_name[0]
         hand_str += r + "of" + s + ' / '
     print(hand_str)
+
