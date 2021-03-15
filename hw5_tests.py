@@ -1,3 +1,8 @@
+#########################################
+##### Name: Yufeng Chen             #####
+##### Uniqname: Kardel              #####
+#########################################
+
 import unittest
 import hw5_cards
 
@@ -34,8 +39,8 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
-        #return X, Y
+        c1 = hw5_cards.Card(0, 12)
+        return self.assertEqual(c1.rank, 12), self.assertEqual(c1.rank_name, "Queen")
     
     def test_q2(self):
         '''
@@ -49,8 +54,8 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
-        #return X, Y    
+        c1 = hw5_cards.Card(0, 12)
+        return self.assertEqual(c1.suit, 1), self.assertEqual(c1.suit_name, "Clubs")
     
 
     def test_q3(self):
@@ -66,8 +71,8 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
-        #return X, Y
+        c1 = hw5_cards.Card(3, 13)
+        return self.assertEqual(str(c1), "King of Spades")
     
     def test_q4(self):
         '''
@@ -81,8 +86,9 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
-        #return X, Y  
+        c1 = hw5_cards.Deck()
+        return self.assertEqual(len(c1.cards), 52)
+
 
     def test_q5(self):
         '''
@@ -96,8 +102,8 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
-        #return X, Y
+        c1 = hw5_cards.Deck()
+        return self.assertIsInstance(c1.deal_card(0), hw5_cards.Card)
     
     def test_q6(self):
         '''
@@ -113,7 +119,11 @@ class TestCard(unittest.TestCase):
 
         '''
         pass
-        #return X, Y    
+        #return X, Y
+        c1 = hw5_cards.Deck()
+        originSize = len(c1.cards)
+        c1.deal_card(0)
+        return self.assertEqual(len(c1.cards), originSize-1)
     
 
     def test_q7(self):
@@ -129,9 +139,14 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
-        #return X, Y
-    
+        c1 = hw5_cards.Deck()
+        originSize = len(c1.cards)
+        card = c1.deal_card(0)
+        dealtSize = len(c1.cards)
+        c1.replace_card(card)
+        newSize = len(c1.cards)
+        return self.assertEqual(dealtSize, originSize - 1), self.assertEqual(newSize, dealtSize + 1)
+
     def test_q8(self):
         '''
         1. fill in your test method for question 8:
@@ -145,9 +160,13 @@ class TestCard(unittest.TestCase):
         ### please note: normally unit test methods do not have return statements. But returning will allow for unit testing of your unit test, and allow you to check your answer with the autograder.  This is optional today.
 
         '''
-        pass
-        #return X, Y  
-
+        c1 = hw5_cards.Deck()
+        originSize = len(c1.cards)
+        card = c1.deal_card(0)
+        dealtSize = len(c1.cards)
+        c1.replace_card(c1.cards[-1])
+        newSize = len(c1.cards)
+        return self.assertEqual(dealtSize, originSize - 1), self.assertEqual(newSize, dealtSize)
 
 
 if __name__=="__main__":
